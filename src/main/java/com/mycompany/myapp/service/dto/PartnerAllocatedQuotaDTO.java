@@ -10,15 +10,13 @@ public class PartnerAllocatedQuotaDTO implements Serializable {
 
     private Long id;
 
-    private Integer partnerOrderId;
-
-    private Integer productId;
-
     private Integer quantity;
 
     private LocalDate startDate;
 
     private LocalDate expiryDate;
+
+    private String status;
 
 
     private Long productDetailsId;
@@ -31,22 +29,6 @@ public class PartnerAllocatedQuotaDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getPartnerOrderId() {
-        return partnerOrderId;
-    }
-
-    public void setPartnerOrderId(Integer partnerOrderId) {
-        this.partnerOrderId = partnerOrderId;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
     }
 
     public Integer getQuantity() {
@@ -71,6 +53,14 @@ public class PartnerAllocatedQuotaDTO implements Serializable {
 
     public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Long getProductDetailsId() {
@@ -114,11 +104,10 @@ public class PartnerAllocatedQuotaDTO implements Serializable {
     public String toString() {
         return "PartnerAllocatedQuotaDTO{" +
             "id=" + getId() +
-            ", partnerOrderId=" + getPartnerOrderId() +
-            ", productId=" + getProductId() +
             ", quantity=" + getQuantity() +
             ", startDate='" + getStartDate() + "'" +
             ", expiryDate='" + getExpiryDate() + "'" +
+            ", status='" + getStatus() + "'" +
             ", productDetails=" + getProductDetailsId() +
             ", partnerOrder=" + getPartnerOrderId() +
             "}";

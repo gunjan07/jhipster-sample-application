@@ -10,16 +10,6 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.partnerOrderId" for="field_partnerOrderId">Partner Order Id</label>
-                    <input type="number" class="form-control" name="partnerOrderId" id="field_partnerOrderId"
-                           formControlName="partnerOrderId"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.productId" for="field_productId">Product Id</label>
-                    <input type="number" class="form-control" name="productId" id="field_productId"
-                           formControlName="productId"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.quantity" for="field_quantity">Quantity</label>
                     <input type="number" class="form-control" name="quantity" id="field_quantity"
                            formControlName="quantity"/>
@@ -41,6 +31,11 @@
                             <button type="button" class="btn btn-secondary" (click)="expiryDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.status" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
                 </div>
 
                 <div class="form-group">

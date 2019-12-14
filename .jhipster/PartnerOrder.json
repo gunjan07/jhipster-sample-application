@@ -2,15 +2,15 @@
     "name": "PartnerOrder",
     "fields": [
         {
-            "fieldName": "partnerId",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "salesOrderId",
             "fieldType": "String"
         },
         {
             "fieldName": "orderDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "serviceNumber",
             "fieldType": "String"
         }
     ],

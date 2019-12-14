@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new PartnerAllocatedQuota(0, 0, 0, 0, currentDate, currentDate);
+      elemDefault = new PartnerAllocatedQuota(0, 0, currentDate, currentDate, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -74,11 +74,10 @@ describe('Service Tests', () => {
       it('should update a PartnerAllocatedQuota', () => {
         const returnedFromService = Object.assign(
           {
-            partnerOrderId: 1,
-            productId: 1,
             quantity: 1,
             startDate: currentDate.format(DATE_FORMAT),
-            expiryDate: currentDate.format(DATE_FORMAT)
+            expiryDate: currentDate.format(DATE_FORMAT),
+            status: 'BBBBBB'
           },
           elemDefault
         );
@@ -102,11 +101,10 @@ describe('Service Tests', () => {
       it('should return a list of PartnerAllocatedQuota', () => {
         const returnedFromService = Object.assign(
           {
-            partnerOrderId: 1,
-            productId: 1,
             quantity: 1,
             startDate: currentDate.format(DATE_FORMAT),
-            expiryDate: currentDate.format(DATE_FORMAT)
+            expiryDate: currentDate.format(DATE_FORMAT),
+            status: 'BBBBBB'
           },
           elemDefault
         );

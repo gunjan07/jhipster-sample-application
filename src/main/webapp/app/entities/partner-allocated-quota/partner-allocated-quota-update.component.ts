@@ -29,11 +29,10 @@ export class PartnerAllocatedQuotaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    partnerOrderId: [],
-    productId: [],
     quantity: [],
     startDate: [],
     expiryDate: [],
+    status: [],
     productDetailsId: [],
     partnerOrderId: []
   });
@@ -66,11 +65,10 @@ export class PartnerAllocatedQuotaUpdateComponent implements OnInit {
   updateForm(partnerAllocatedQuota: IPartnerAllocatedQuota) {
     this.editForm.patchValue({
       id: partnerAllocatedQuota.id,
-      partnerOrderId: partnerAllocatedQuota.partnerOrderId,
-      productId: partnerAllocatedQuota.productId,
       quantity: partnerAllocatedQuota.quantity,
       startDate: partnerAllocatedQuota.startDate,
       expiryDate: partnerAllocatedQuota.expiryDate,
+      status: partnerAllocatedQuota.status,
       productDetailsId: partnerAllocatedQuota.productDetailsId,
       partnerOrderId: partnerAllocatedQuota.partnerOrderId
     });
@@ -94,11 +92,10 @@ export class PartnerAllocatedQuotaUpdateComponent implements OnInit {
     return {
       ...new PartnerAllocatedQuota(),
       id: this.editForm.get(['id']).value,
-      partnerOrderId: this.editForm.get(['partnerOrderId']).value,
-      productId: this.editForm.get(['productId']).value,
       quantity: this.editForm.get(['quantity']).value,
       startDate: this.editForm.get(['startDate']).value,
       expiryDate: this.editForm.get(['expiryDate']).value,
+      status: this.editForm.get(['status']).value,
       productDetailsId: this.editForm.get(['productDetailsId']).value,
       partnerOrderId: this.editForm.get(['partnerOrderId']).value
     };

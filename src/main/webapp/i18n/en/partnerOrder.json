@@ -16,9 +16,9 @@
       "detail": {
         "title": "Partner Order"
       },
-      "partnerId": "Partner Id",
       "salesOrderId": "Sales Order Id",
       "orderDate": "Order Date",
+      "serviceNumber": "Service Number",
       "order": "Order",
       "partner": "Partner"
     }
