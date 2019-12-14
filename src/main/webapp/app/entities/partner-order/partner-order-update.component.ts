@@ -22,9 +22,9 @@ export class PartnerOrderUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    partnerId: [],
     salesOrderId: [],
     orderDate: [],
+    serviceNumber: [],
     partnerId: []
   });
 
@@ -49,9 +49,9 @@ export class PartnerOrderUpdateComponent implements OnInit {
   updateForm(partnerOrder: IPartnerOrder) {
     this.editForm.patchValue({
       id: partnerOrder.id,
-      partnerId: partnerOrder.partnerId,
       salesOrderId: partnerOrder.salesOrderId,
       orderDate: partnerOrder.orderDate,
+      serviceNumber: partnerOrder.serviceNumber,
       partnerId: partnerOrder.partnerId
     });
   }
@@ -74,9 +74,9 @@ export class PartnerOrderUpdateComponent implements OnInit {
     return {
       ...new PartnerOrder(),
       id: this.editForm.get(['id']).value,
-      partnerId: this.editForm.get(['partnerId']).value,
       salesOrderId: this.editForm.get(['salesOrderId']).value,
       orderDate: this.editForm.get(['orderDate']).value,
+      serviceNumber: this.editForm.get(['serviceNumber']).value,
       partnerId: this.editForm.get(['partnerId']).value
     };
   }

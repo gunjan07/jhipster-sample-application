@@ -38,12 +38,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = JhipsterSampleApplicationApp.class)
 public class PartnerAllocatedQuotaResourceIT {
 
-    private static final Integer DEFAULT_PARTNER_ORDER_ID = 1;
-    private static final Integer UPDATED_PARTNER_ORDER_ID = 2;
-
-    private static final Integer DEFAULT_PRODUCT_ID = 1;
-    private static final Integer UPDATED_PRODUCT_ID = 2;
-
     private static final Integer DEFAULT_QUANTITY = 1;
     private static final Integer UPDATED_QUANTITY = 2;
 
@@ -52,6 +46,9 @@ public class PartnerAllocatedQuotaResourceIT {
 
     private static final LocalDate DEFAULT_EXPIRY_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_EXPIRY_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_STATUS = "AAAAAAAAAA";
+    private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
     @Autowired
     private PartnerAllocatedQuotaRepository partnerAllocatedQuotaRepository;
@@ -101,11 +98,10 @@ public class PartnerAllocatedQuotaResourceIT {
      */
     public static PartnerAllocatedQuota createEntity(EntityManager em) {
         PartnerAllocatedQuota partnerAllocatedQuota = new PartnerAllocatedQuota()
-            .partnerOrderId(DEFAULT_PARTNER_ORDER_ID)
-            .productId(DEFAULT_PRODUCT_ID)
             .quantity(DEFAULT_QUANTITY)
             .startDate(DEFAULT_START_DATE)
-            .expiryDate(DEFAULT_EXPIRY_DATE);
+            .expiryDate(DEFAULT_EXPIRY_DATE)
+            .status(DEFAULT_STATUS);
         return partnerAllocatedQuota;
     }
     /**
@@ -116,11 +112,10 @@ public class PartnerAllocatedQuotaResourceIT {
      */
     public static PartnerAllocatedQuota createUpdatedEntity(EntityManager em) {
         PartnerAllocatedQuota partnerAllocatedQuota = new PartnerAllocatedQuota()
-            .partnerOrderId(UPDATED_PARTNER_ORDER_ID)
-            .productId(UPDATED_PRODUCT_ID)
             .quantity(UPDATED_QUANTITY)
             .startDate(UPDATED_START_DATE)
-            .expiryDate(UPDATED_EXPIRY_DATE);
+            .expiryDate(UPDATED_EXPIRY_DATE)
+            .status(UPDATED_STATUS);
         return partnerAllocatedQuota;
     }
 
@@ -145,11 +140,10 @@ public class PartnerAllocatedQuotaResourceIT {
         List<PartnerAllocatedQuota> partnerAllocatedQuotaList = partnerAllocatedQuotaRepository.findAll();
         assertThat(partnerAllocatedQuotaList).hasSize(databaseSizeBeforeCreate + 1);
         PartnerAllocatedQuota testPartnerAllocatedQuota = partnerAllocatedQuotaList.get(partnerAllocatedQuotaList.size() - 1);
-        assertThat(testPartnerAllocatedQuota.getPartnerOrderId()).isEqualTo(DEFAULT_PARTNER_ORDER_ID);
-        assertThat(testPartnerAllocatedQuota.getProductId()).isEqualTo(DEFAULT_PRODUCT_ID);
         assertThat(testPartnerAllocatedQuota.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
         assertThat(testPartnerAllocatedQuota.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testPartnerAllocatedQuota.getExpiryDate()).isEqualTo(DEFAULT_EXPIRY_DATE);
+        assertThat(testPartnerAllocatedQuota.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -184,11 +178,10 @@ public class PartnerAllocatedQuotaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(partnerAllocatedQuota.getId().intValue())))
-            .andExpect(jsonPath("$.[*].partnerOrderId").value(hasItem(DEFAULT_PARTNER_ORDER_ID)))
-            .andExpect(jsonPath("$.[*].productId").value(hasItem(DEFAULT_PRODUCT_ID)))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
-            .andExpect(jsonPath("$.[*].expiryDate").value(hasItem(DEFAULT_EXPIRY_DATE.toString())));
+            .andExpect(jsonPath("$.[*].expiryDate").value(hasItem(DEFAULT_EXPIRY_DATE.toString())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
     }
     
     @Test
@@ -202,11 +195,10 @@ public class PartnerAllocatedQuotaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(partnerAllocatedQuota.getId().intValue()))
-            .andExpect(jsonPath("$.partnerOrderId").value(DEFAULT_PARTNER_ORDER_ID))
-            .andExpect(jsonPath("$.productId").value(DEFAULT_PRODUCT_ID))
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
-            .andExpect(jsonPath("$.expiryDate").value(DEFAULT_EXPIRY_DATE.toString()));
+            .andExpect(jsonPath("$.expiryDate").value(DEFAULT_EXPIRY_DATE.toString()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS));
     }
 
     @Test
@@ -230,11 +222,10 @@ public class PartnerAllocatedQuotaResourceIT {
         // Disconnect from session so that the updates on updatedPartnerAllocatedQuota are not directly saved in db
         em.detach(updatedPartnerAllocatedQuota);
         updatedPartnerAllocatedQuota
-            .partnerOrderId(UPDATED_PARTNER_ORDER_ID)
-            .productId(UPDATED_PRODUCT_ID)
             .quantity(UPDATED_QUANTITY)
             .startDate(UPDATED_START_DATE)
-            .expiryDate(UPDATED_EXPIRY_DATE);
+            .expiryDate(UPDATED_EXPIRY_DATE)
+            .status(UPDATED_STATUS);
         PartnerAllocatedQuotaDTO partnerAllocatedQuotaDTO = partnerAllocatedQuotaMapper.toDto(updatedPartnerAllocatedQuota);
 
         restPartnerAllocatedQuotaMockMvc.perform(put("/api/partner-allocated-quotas")
@@ -246,11 +237,10 @@ public class PartnerAllocatedQuotaResourceIT {
         List<PartnerAllocatedQuota> partnerAllocatedQuotaList = partnerAllocatedQuotaRepository.findAll();
         assertThat(partnerAllocatedQuotaList).hasSize(databaseSizeBeforeUpdate);
         PartnerAllocatedQuota testPartnerAllocatedQuota = partnerAllocatedQuotaList.get(partnerAllocatedQuotaList.size() - 1);
-        assertThat(testPartnerAllocatedQuota.getPartnerOrderId()).isEqualTo(UPDATED_PARTNER_ORDER_ID);
-        assertThat(testPartnerAllocatedQuota.getProductId()).isEqualTo(UPDATED_PRODUCT_ID);
         assertThat(testPartnerAllocatedQuota.getQuantity()).isEqualTo(UPDATED_QUANTITY);
         assertThat(testPartnerAllocatedQuota.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testPartnerAllocatedQuota.getExpiryDate()).isEqualTo(UPDATED_EXPIRY_DATE);
+        assertThat(testPartnerAllocatedQuota.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

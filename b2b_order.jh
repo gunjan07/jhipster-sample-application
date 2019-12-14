@@ -9,17 +9,16 @@ entity Partner {
 }
 
 entity PartnerOrder {
-	partnerId Integer,
 	salesOrderId String,
-	orderDate String
+	orderDate String,
+    serviceNumber String
 }
 
 entity PartnerAllocatedQuota {
-	partnerOrderId Integer,
-	productId Integer,
 	quantity Integer,
     startDate LocalDate,
-    expiryDate LocalDate
+    expiryDate LocalDate,
+    status String
 }
 
 relationship OneToMany {

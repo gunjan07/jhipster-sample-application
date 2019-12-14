@@ -19,9 +19,9 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-            <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.partnerId">Partner Id</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.salesOrderId">Sales Order Id</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.orderDate">Order Date</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.serviceNumber">Service Number</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.partner">Partner</span></th>
             <th scope="col"></th>
             </tr>
@@ -29,9 +29,9 @@
             <tbody>
             <tr *ngFor="let partnerOrder of partnerOrders ;trackBy: trackId">
                 <td><a [routerLink]="['/partner-order', partnerOrder.id, 'view' ]">{{partnerOrder.id}}</a></td>
-                <td>{{partnerOrder.partnerId}}</td>
                 <td>{{partnerOrder.salesOrderId}}</td>
                 <td>{{partnerOrder.orderDate}}</td>
+                <td>{{partnerOrder.serviceNumber}}</td>
                 <td>
                     <div *ngIf="partnerOrder.partnerId">
                         <a [routerLink]="['/partner', partnerOrder.partnerId , 'view' ]" >{{partnerOrder.partnerId}}</a>

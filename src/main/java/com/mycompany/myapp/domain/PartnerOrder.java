@@ -23,14 +23,14 @@ public class PartnerOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "partner_id")
-    private Integer partnerId;
-
     @Column(name = "sales_order_id")
     private String salesOrderId;
 
     @Column(name = "order_date")
     private String orderDate;
+
+    @Column(name = "service_number")
+    private String serviceNumber;
 
     @OneToMany(mappedBy = "partnerOrder")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -47,19 +47,6 @@ public class PartnerOrder implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getPartnerId() {
-        return partnerId;
-    }
-
-    public PartnerOrder partnerId(Integer partnerId) {
-        this.partnerId = partnerId;
-        return this;
-    }
-
-    public void setPartnerId(Integer partnerId) {
-        this.partnerId = partnerId;
     }
 
     public String getSalesOrderId() {
@@ -86,6 +73,19 @@ public class PartnerOrder implements Serializable {
 
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public String getServiceNumber() {
+        return serviceNumber;
+    }
+
+    public PartnerOrder serviceNumber(String serviceNumber) {
+        this.serviceNumber = serviceNumber;
+        return this;
+    }
+
+    public void setServiceNumber(String serviceNumber) {
+        this.serviceNumber = serviceNumber;
     }
 
     public Set<PartnerAllocatedQuota> getOrders() {
@@ -147,9 +147,9 @@ public class PartnerOrder implements Serializable {
     public String toString() {
         return "PartnerOrder{" +
             "id=" + getId() +
-            ", partnerId=" + getPartnerId() +
             ", salesOrderId='" + getSalesOrderId() + "'" +
             ", orderDate='" + getOrderDate() + "'" +
+            ", serviceNumber='" + getServiceNumber() + "'" +
             "}";
     }
 }

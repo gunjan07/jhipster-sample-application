@@ -16,12 +16,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="partner_order_id" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="product_id" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="quantity" type="integer">
                 <constraints nullable="true" />
             </column>
@@ -29,6 +23,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="expiry_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="product_details_id" type="bigint">
@@ -60,11 +57,10 @@
                   separator=";"
                   tableName="partner_allocated_quota">
             <column name="id" type="numeric"/>
-            <column name="partner_order_id" type="numeric"/>
-            <column name="product_id" type="numeric"/>
             <column name="quantity" type="numeric"/>
             <column name="start_date" type="date"/>
             <column name="expiry_date" type="date"/>
+            <column name="status" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

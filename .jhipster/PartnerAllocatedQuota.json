@@ -2,14 +2,6 @@
     "name": "PartnerAllocatedQuota",
     "fields": [
         {
-            "fieldName": "partnerOrderId",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "productId",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "quantity",
             "fieldType": "Integer"
         },
@@ -20,6 +12,10 @@
         {
             "fieldName": "expiryDate",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
         }
     ],
     "relationships": [

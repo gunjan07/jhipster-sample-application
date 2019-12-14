@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(PartnerOrderService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new PartnerOrder(0, 0, 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new PartnerOrder(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -56,9 +56,9 @@ describe('Service Tests', () => {
       it('should update a PartnerOrder', () => {
         const returnedFromService = Object.assign(
           {
-            partnerId: 1,
             salesOrderId: 'BBBBBB',
-            orderDate: 'BBBBBB'
+            orderDate: 'BBBBBB',
+            serviceNumber: 'BBBBBB'
           },
           elemDefault
         );
@@ -76,9 +76,9 @@ describe('Service Tests', () => {
       it('should return a list of PartnerOrder', () => {
         const returnedFromService = Object.assign(
           {
-            partnerId: 1,
             salesOrderId: 'BBBBBB',
-            orderDate: 'BBBBBB'
+            orderDate: 'BBBBBB',
+            serviceNumber: 'BBBBBB'
           },
           elemDefault
         );

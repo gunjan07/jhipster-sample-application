@@ -22,12 +22,6 @@ public class PartnerAllocatedQuota implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "partner_order_id")
-    private Integer partnerOrderId;
-
-    @Column(name = "product_id")
-    private Integer productId;
-
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -36,6 +30,9 @@ public class PartnerAllocatedQuota implements Serializable {
 
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
+
+    @Column(name = "status")
+    private String status;
 
     @ManyToOne
     @JsonIgnoreProperties("partnerAllocatedQuotas")
@@ -52,32 +49,6 @@ public class PartnerAllocatedQuota implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getPartnerOrderId() {
-        return partnerOrderId;
-    }
-
-    public PartnerAllocatedQuota partnerOrderId(Integer partnerOrderId) {
-        this.partnerOrderId = partnerOrderId;
-        return this;
-    }
-
-    public void setPartnerOrderId(Integer partnerOrderId) {
-        this.partnerOrderId = partnerOrderId;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public PartnerAllocatedQuota productId(Integer productId) {
-        this.productId = productId;
-        return this;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
     }
 
     public Integer getQuantity() {
@@ -117,6 +88,19 @@ public class PartnerAllocatedQuota implements Serializable {
 
     public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public PartnerAllocatedQuota status(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Product getProductDetails() {
@@ -166,11 +150,10 @@ public class PartnerAllocatedQuota implements Serializable {
     public String toString() {
         return "PartnerAllocatedQuota{" +
             "id=" + getId() +
-            ", partnerOrderId=" + getPartnerOrderId() +
-            ", productId=" + getProductId() +
             ", quantity=" + getQuantity() +
             ", startDate='" + getStartDate() + "'" +
             ", expiryDate='" + getExpiryDate() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

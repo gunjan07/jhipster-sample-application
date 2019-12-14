@@ -9,11 +9,11 @@ public class PartnerOrderDTO implements Serializable {
 
     private Long id;
 
-    private Integer partnerId;
-
     private String salesOrderId;
 
     private String orderDate;
+
+    private String serviceNumber;
 
 
     private Long partnerId;
@@ -24,14 +24,6 @@ public class PartnerOrderDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getPartnerId() {
-        return partnerId;
-    }
-
-    public void setPartnerId(Integer partnerId) {
-        this.partnerId = partnerId;
     }
 
     public String getSalesOrderId() {
@@ -48,6 +40,14 @@ public class PartnerOrderDTO implements Serializable {
 
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public String getServiceNumber() {
+        return serviceNumber;
+    }
+
+    public void setServiceNumber(String serviceNumber) {
+        this.serviceNumber = serviceNumber;
     }
 
     public Long getPartnerId() {
@@ -83,9 +83,9 @@ public class PartnerOrderDTO implements Serializable {
     public String toString() {
         return "PartnerOrderDTO{" +
             "id=" + getId() +
-            ", partnerId=" + getPartnerId() +
             ", salesOrderId='" + getSalesOrderId() + "'" +
             ", orderDate='" + getOrderDate() + "'" +
+            ", serviceNumber='" + getServiceNumber() + "'" +
             ", partner=" + getPartnerId() +
             "}";
     }

@@ -16,11 +16,10 @@
       "detail": {
         "title": "Partner Allocated Quota"
       },
-      "partnerOrderId": "Partner Order Id",
-      "productId": "Product Id",
       "quantity": "Quantity",
       "startDate": "Start Date",
       "expiryDate": "Expiry Date",
+      "status": "Status",
       "productDetails": "Product Details",
       "partnerOrder": "Partner Order"
     }

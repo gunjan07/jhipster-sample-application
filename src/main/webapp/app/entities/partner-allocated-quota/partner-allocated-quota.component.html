@@ -19,11 +19,10 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-            <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.partnerOrderId">Partner Order Id</span></th>
-            <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.productId">Product Id</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.quantity">Quantity</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.startDate">Start Date</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.expiryDate">Expiry Date</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.status">Status</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.productDetails">Product Details</span></th>
             <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.partnerOrder">Partner Order</span></th>
             <th scope="col"></th>
@@ -32,11 +31,10 @@
             <tbody>
             <tr *ngFor="let partnerAllocatedQuota of partnerAllocatedQuotas ;trackBy: trackId">
                 <td><a [routerLink]="['/partner-allocated-quota', partnerAllocatedQuota.id, 'view' ]">{{partnerAllocatedQuota.id}}</a></td>
-                <td>{{partnerAllocatedQuota.partnerOrderId}}</td>
-                <td>{{partnerAllocatedQuota.productId}}</td>
                 <td>{{partnerAllocatedQuota.quantity}}</td>
                 <td>{{partnerAllocatedQuota.startDate | date:'mediumDate'}}</td>
                 <td>{{partnerAllocatedQuota.expiryDate | date:'mediumDate'}}</td>
+                <td>{{partnerAllocatedQuota.status}}</td>
                 <td>
                     <div *ngIf="partnerAllocatedQuota.productDetailsId">
                         <a [routerLink]="['/product', partnerAllocatedQuota.productDetailsId , 'view' ]" >{{partnerAllocatedQuota.productDetailsId}}</a>
