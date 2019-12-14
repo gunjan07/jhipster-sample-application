@@ -1,0 +1,36 @@
+entity Product {
+	productName String,
+    productCode Integer
+}
+
+entity Partner {
+	partnerName String,
+    partnerCode String
+}
+
+entity PartnerOrder {
+	partnerId Integer,
+	salesOrderId String,
+	orderDate String
+}
+
+entity PartnerAllocatedQuota {
+	partnerOrderId Integer,
+	productId Integer,
+	quantity Integer,
+    startDate LocalDate,
+    expiryDate LocalDate
+}
+
+relationship OneToMany {
+	Partner{partnerOrder} to PartnerOrder
+    PartnerOrder{order} to PartnerAllocatedQuota
+}
+
+relationship ManyToOne {
+	PartnerAllocatedQuota{ProductDetails} to Product
+}
+
+
+dto * with mapstruct
+service * with serviceClass
