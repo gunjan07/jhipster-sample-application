@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="partnerOrder">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.detail.title">Partner Order</span> {{partnerOrder.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.partnerId">Partner Id</span></dt>
+                <dd>
+                    <span>{{partnerOrder.partnerId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.salesOrderId">Sales Order Id</span></dt>
+                <dd>
+                    <span>{{partnerOrder.salesOrderId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.orderDate">Order Date</span></dt>
+                <dd>
+                    <span>{{partnerOrder.orderDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerOrder.partner">Partner</span></dt>
+                <dd>
+                    <div *ngIf="partnerOrder.partnerId">
+                        <a [routerLink]="['/partner', partnerOrder.partnerId, 'view']">{{partnerOrder.partnerId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/partner-order', partnerOrder.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
