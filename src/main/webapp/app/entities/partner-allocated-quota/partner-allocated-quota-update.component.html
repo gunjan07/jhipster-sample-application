@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-partner-allocated-quota-heading" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.home.createOrEditLabel">Create or edit a Partner Allocated Quota</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.partnerOrderId" for="field_partnerOrderId">Partner Order Id</label>
+                    <input type="number" class="form-control" name="partnerOrderId" id="field_partnerOrderId"
+                           formControlName="partnerOrderId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.productId" for="field_productId">Product Id</label>
+                    <input type="number" class="form-control" name="productId" id="field_productId"
+                           formControlName="productId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.quantity" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                           formControlName="quantity"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.startDate" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" formControlName="startDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.expiryDate" for="field_expiryDate">Expiry Date</label>
+                    <div class="input-group">
+                        <input id="field_expiryDate" type="text" class="form-control" name="expiryDate" ngbDatepicker  #expiryDateDp="ngbDatepicker" formControlName="expiryDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="expiryDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.productDetails" for="field_productDetails">Product Details</label>
+                    <select class="form-control" id="field_productDetails" name="productDetails" formControlName="productDetailsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productOption.id" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.partnerOrder" for="field_partnerOrder">Partner Order</label>
+                    <select class="form-control" id="field_partnerOrder" name="partnerOrder" formControlName="partnerOrderId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="partnerOrderOption.id" *ngFor="let partnerOrderOption of partnerorders; trackBy: trackPartnerOrderById">{{partnerOrderOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="partnerAllocatedQuota">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.detail.title">Partner Allocated Quota</span> {{partnerAllocatedQuota.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.partnerOrderId">Partner Order Id</span></dt>
+                <dd>
+                    <span>{{partnerAllocatedQuota.partnerOrderId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.productId">Product Id</span></dt>
+                <dd>
+                    <span>{{partnerAllocatedQuota.productId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{partnerAllocatedQuota.quantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{partnerAllocatedQuota.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.expiryDate">Expiry Date</span></dt>
+                <dd>
+                    <span>{{partnerAllocatedQuota.expiryDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.productDetails">Product Details</span></dt>
+                <dd>
+                    <div *ngIf="partnerAllocatedQuota.productDetailsId">
+                        <a [routerLink]="['/product', partnerAllocatedQuota.productDetailsId, 'view']">{{partnerAllocatedQuota.productDetailsId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.partnerAllocatedQuota.partnerOrder">Partner Order</span></dt>
+                <dd>
+                    <div *ngIf="partnerAllocatedQuota.partnerOrderId">
+                        <a [routerLink]="['/partner-order', partnerAllocatedQuota.partnerOrderId, 'view']">{{partnerAllocatedQuota.partnerOrderId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/partner-allocated-quota', partnerAllocatedQuota.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
